@@ -10,26 +10,26 @@ void solve()
     ll ans = 0;
     if(x > y)
     {
-        ans += pow((x - 1), 2);
         if(x % 2)
         {
+            ans += pow((x - 1), 2);
             ans += y;
         }
         else
         {
-            ans += x + x - y;
+            ans += (x * x)- y + 1;
         }
     }
     else
     {
-        ans += pow((y - 1), 2);
         if(y % 2)
         {
-            ans += y + y - x;
+            ans += (y * y) - x + 1;
         }
         else
         {
-            ans += y;
+            ans += pow((y - 1), 2);
+            ans += y + y - x;
         }
     }
     cout << ans << '\n';

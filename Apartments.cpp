@@ -26,7 +26,26 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 
 void solve()
 {
-    
+    ll n, k, m;
+    cin >> n >> k >> m;
+    vector<int> b(n), c(k);
+    for(auto & i : b) cin >> i;
+    for(auto & i : c) cin >> i;
+    sort(b.begin(), b.end());
+    sort(c.begin(), c.end());
+    int ans = 0;
+    for(int i = 0; i < k; i++)
+    {
+        auto it = lower_bound(b.begin(), b.end(), c[i] - m);
+        if(it == b.end()) continue;
+        if(*it <= c[i] + m)
+        {
+            ans++;
+            *it = 0;
+        }
+    }
+    cout << ans << '\n';
+
     return;
 }
 

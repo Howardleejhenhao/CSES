@@ -26,7 +26,33 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 
 void solve()
 {
-    
+    int n, x;
+    cin >> n >> x;
+    vector<int> v(n);
+    for(auto & i : v) cin >> i;
+    sort(v.begin(), v.end());
+    int now = 0;
+    int out = 0;
+    int cnt = 0;
+    while(out < n)
+    {
+        auto it = upper_bound(v.begin(), v.end(), x - v[out]);
+        if(it == v.end())
+        {
+            v[out] = 0;
+            out++;
+            cnt++;
+        }
+        else
+        {
+            v[out] = 0;
+            *it = 0;
+            out += 2;
+            cnt++;
+        }
+        sort(v.begin(), v.end());
+    }
+    cout << cnt << '\n';
     return;
 }
 
